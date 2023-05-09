@@ -5,7 +5,7 @@ using UnityEngine;
 public class Unit : MonoBehaviour
 {
     [Header("Set in Inspector")]
-    public int hitpoint = 0;
+    public float hitpoint = 0;
     public int maxHitpoint = 0;
     public int level = 0;
     public int armor = 0;
@@ -25,7 +25,7 @@ public class Unit : MonoBehaviour
         {
             lastImmune = Time.time;
             if (dmg.attackDmg >= 0)
-                hitpoint -= dmg.attackDmg;
+                hitpoint -= dmg.attackDmg ;
             else
             {
                 dmg.attackDmg = 0;

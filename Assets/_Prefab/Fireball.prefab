@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 1859479734640264443}
   - component: {fileID: 8733520241434139116}
   - component: {fileID: 4808839167551103228}
-  - component: {fileID: -4301478265885868898}
+  - component: {fileID: 1853848469980772431}
   m_Layer: 8
   m_Name: Fireball
   m_TagString: bullet
@@ -162,7 +162,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-4301478265885868898
+--- !u!114 &1853848469980772431
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,16 +171,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2665751836617391165}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 205225312b1abe14684705bd26feb8b7, type: 3}
+  m_Script: {fileID: 11500000, guid: 30f1dbac01a746b48885dab41447586c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   collisionMask:
     serializedVersion: 2
     m_Bits: 256
-  fireballPrefab: {fileID: 2665751836617391165}
-  fireballSpeed: 30
-  fireDamage: 5
-  explosionRadius: 8
+  fireballDamage: 6
+  explosionRadius: 100
+  manacost: 5
+  fireballSpeed: 10
+  percentOfExpload: 50
   explosionPrefab: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
 --- !u!1001 &782427248455385947
 PrefabInstance:

@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Enemy : Mover
 {
+    GameManager gameManager;
     protected RaycastHit hit;
     private Transform playerTransform;
     public int damage = 2;
+    private int amount = 1;
+
 
     protected override void Start()
     {
         base.Start();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        Debug.Log("get enemy box");
+        //Debug.Log("get enemy box");
         
     }
 
@@ -61,7 +64,10 @@ public class Enemy : Mover
 
     protected override void Death()
     {
+        gameManager = FindObjectOfType<GameManager>();
+        gameManager.AddScore(amount);
         playerTransform.GetComponent<Player>().GetXp(xpValue);
+        Debug.Log("Dead");
         Destroy(gameObject);
     }
 }

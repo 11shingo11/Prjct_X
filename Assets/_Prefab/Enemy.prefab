@@ -321,7 +321,6 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 256
-  damage: 0
 --- !u!1 &733378131392325573
 GameObject:
   m_ObjectHideFlags: 0
@@ -1689,9 +1688,11 @@ MonoBehaviour:
   maxHitpoint: 5
   level: 0
   armor: 0
-  moveSpeed: 7
+  xp: 0
+  moveSpeed: 0
   turningSpeed: 600
   xpValue: 1
+  damage: 2
 --- !u!54 &6542265479528747667
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1736,7 +1737,6 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 128
-  damage: 2
 --- !u!1 &4501724173308995233
 GameObject:
   m_ObjectHideFlags: 0

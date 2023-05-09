@@ -2,5 +2,5 @@ using UnityEngine;
 
 public struct Damage 
 {
-    public int attackDmg;
+    public float attackDmg;
 }
