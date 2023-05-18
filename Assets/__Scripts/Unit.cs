@@ -8,7 +8,7 @@ public class Unit : MonoBehaviour
     public float hitpoint = 0;
     public int maxHitpoint = 0;
     public int level = 0;
-    public int armor = 0;
+    public float armor = 0;
     public int xp = 0;
     public float moveSpeed = 0f;
     public float turningSpeed = 600f;

@@ -67,8 +67,10 @@ public class Enemy : Mover
         gameManager = FindObjectOfType<GameManager>();
         gameManager.AddScore(amount);
         playerTransform.GetComponent<Player>().GetXp(xpValue);
-        Debug.Log("Dead");
-        Destroy(gameObject);
+        moveSpeed = 0;
+        turningSpeed = 0;
+        anim.SetTrigger("Die");
+        Destroy(gameObject,2f);
     }
 }
 

@@ -9,11 +9,14 @@ public class GameManager : MonoBehaviour
     public int score; // текущий счет
     public FireMagic fire;
     public Enemy enemy;
+    
     private void Awake()
     {
         fire.fireballDamage = 5;
         fire.percentOfExpload = 15f;
         fire.explosionRadius = 8f;
+        fire.manacost = 5;
+        fire.fireballSpeed = 15;
         if (instance == null) // провер€ем, что экземпл€р GameManager еще не создан
         {
             instance = this; // если нет, то создаем его

@@ -11,12 +11,14 @@ public class Player : Mover
     public float maxMana = 50f;
     private FireMagic fireMagic;
     private bool isAlive = true;
-    private float manaRecovery = 2.5f;
+    public float manaRecovery = 2.5f;
     private float recoverCooldown = 1.0f;
     private float lastRecover;
     public bool leveling = false;
     public GameObject fireballPrefab;
     public Damage dmg;
+    public List<int> xpToLeveling;
+    private int levelIndex = 0;
 
     protected override void Start()
     {
@@ -33,7 +35,6 @@ public class Player : Mover
         if (!isAlive)
             return;
         base.RecieveDamage(dmg);
-        Debug.Log("you recive "+dmg.attackDmg.ToString()+" damage");
     }
 
     public void TakeDamage(Damage damage)
@@ -47,12 +48,20 @@ public class Player : Mover
         LvlUp();
         ManaRecovery();
         if (Input.GetKeyDown(KeyCode.Space))
-            Shoot(fireballPrefab);
+            if (currMana - GameManager.instance.fire.manacost >= 0)
+            {
+                //anim.SetTrigger("attack");
+                Shoot(fireballPrefab);
+            }
+            else
+                return;
+
     }
 
     public void Shoot(GameObject pref)
     {
-        GameObject fireball = Instantiate(pref, transform.position + transform.forward * 2.2f + transform.right * 1.2f + Vector3.up * 2f, transform.rotation);       
+        GameObject fireball = Instantiate(pref, transform.position + transform.forward * 1.175f + transform.right * 0.544f + Vector3.up * 1.292f, transform.rotation);
+        currMana -= GameManager.instance.fire.manacost;
         Destroy(fireball.gameObject, 5f);
     }
     public void GetXp(int xpValue)
@@ -63,14 +72,14 @@ public class Player : Mover
     public void LvlUp()
     {
 
-        if (xp >= 5)
+        if (xp >= xpToLeveling[levelIndex])
         {
             leveling = true;
             xp = 0;
             level += 1;
             hitpoint = maxHitpoint;
-            moveSpeed += 0.1f;
             currMana = maxMana;
+            levelIndex++;
         }
         else
         {
@@ -97,4 +106,26 @@ public class Player : Mover
         SceneManager.LoadScene("Main");
     }
 
+
+    void OnCollisionEnter(Collision collision)
+    {
+        //Debug.Log("enter");
+        
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        
+        //Debug.Log("stay");
+    }
+
+    void FixedUpdate()
+    {
+        // Ограничение позиции игрока
+        transform.position = new Vector3(
+            Mathf.Clamp(transform.position.x, -64f, 64f),
+            Mathf.Clamp(transform.position.y, -0f, 0f),
+            Mathf.Clamp(transform.position.z, -79f, 75f)
+        );
+    }
 }

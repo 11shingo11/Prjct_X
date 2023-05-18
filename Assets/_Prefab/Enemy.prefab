@@ -1691,7 +1691,7 @@ MonoBehaviour:
   xp: 0
   moveSpeed: 0
   turningSpeed: 600
-  xpValue: 1
+  xpValue: 5
   damage: 2
 --- !u!54 &6542265479528747667
 Rigidbody:
